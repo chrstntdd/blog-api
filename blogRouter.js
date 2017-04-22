@@ -38,4 +38,22 @@ router.delete('/:id', (req, res) => {
   res.status(204).end();
 });
 
+router.put('/:id', jsonParser, (req,res) => {
+  requiredFields = ['title', 'content', 'author', 'id'];
+  checkFields(requiredFields, req);
+  if (req.params.id !== req.body.id){
+    const message = `The request path id: ${req.params.id} must match the request body id: ${req.body.id}`;
+    console.error(message);
+    return res.status(400).send(message);
+  }
+  const updatedPost = BlogPosts.update({
+    id: req.params.id,
+    title: req.body.title,
+    content: req.body.content,
+    author: req.body.author
+  });
+  console.log(`Finished updating blog post ${req.params.id}.`);
+  res.status(204).json(updatedPost);
+});
+
 module.exports = router;
