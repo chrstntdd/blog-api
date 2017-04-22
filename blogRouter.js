@@ -28,4 +28,10 @@ router.post('/', jsonParser, (req, res) => {
   res.status(201).json(post);
 });
 
+router.delete('/:id', (req, res) => {
+  BlogPosts.delete(req.params.id);
+  console.log(`Deleted blog post ${req.params.id}.`);
+  res.status(204).end();
+});
+
 module.exports = router;
