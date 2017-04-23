@@ -8,5 +8,13 @@
     "express": "^4.15.2",
     "express-router": "^0.0.1",
     "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.2.0"
+  },
+  "scripts": {
+    "test": "mocha ./test"
   }
 }
